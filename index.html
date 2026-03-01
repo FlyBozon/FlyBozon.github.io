@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mariia Krykun — Project Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-card: #12121a;
+            --bg-card-hover: #1a1a2e;
+            --accent: #6c63ff;
+            --accent-light: #8b83ff;
+            --accent-glow: rgba(108, 99, 255, 0.15);
+            --text-primary: #e8e8f0;
+            --text-secondary: #9090a8;
+            --text-muted: #606078;
+            --border: #2a2a3e;
+            --tag-bg: rgba(108, 99, 255, 0.12);
+            --tag-text: #a8a3ff;
+            --success: #4ade80;
+            --warning: #fbbf24;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+            transition: transform 0.3s;
+        }
+
+        nav .logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+        }
+
+        nav .logo span { color: var(--accent); }
+
+        nav ul {
+            display: flex;
+            gap: 0.25rem;
+            list-style: none;
+        }
+
+        nav ul a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 0.5rem 0.85rem;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        nav ul a:hover, nav ul a.active {
+            color: var(--text-primary);
+            background: var(--accent-glow);
+        }
+
+        /* Slide / Section */
+        section {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            padding: 80px 2rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Title Slide */
+        #hero {
+            text-align: center;
+            background: radial-gradient(ellipse at 50% 30%, rgba(108, 99, 255, 0.08) 0%, transparent 70%);
+        }
+
+        #hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        #hero h1 span { color: var(--accent); }
+
+        #hero .subtitle {
+            font-size: clamp(1rem, 2vw, 1.35rem);
+            color: var(--text-secondary);
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .tag {
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            padding: 0.35rem 0.85rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(108, 99, 255, 0.15);
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-hint::after {
+            content: '';
+            display: block;
+            width: 20px;
+            height: 20px;
+            margin: 0.5rem auto 0;
+            border-right: 2px solid var(--text-muted);
+            border-bottom: 2px solid var(--text-muted);
+            transform: rotate(45deg);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* Section Headers */
+        .section-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .section-desc {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-top: 0.75rem;
+            max-width: 700px;
+        }
+
+        /* Image / Video Grids */
+        .media-grid {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .media-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+        .media-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+        .media-grid.cols-2-1 { grid-template-columns: 2fr 1fr; }
+        .media-grid.cols-1-2 { grid-template-columns: 1fr 2fr; }
+
+        .media-item {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            position: relative;
+            transition: border-color 0.3s;
+        }
+
+        .media-item:hover {
+            border-color: var(--accent);
+        }
+
+        .media-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .media-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            background: #000;
+        }
+
+        .media-item.tall { grid-row: span 2; }
+        .media-item.wide { grid-column: span 2; }
+
+        .media-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 1rem 0.75rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.9);
+            font-weight: 500;
+        }
+
+        /* Project cards layout */
+        .project-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .project-layout.reverse { direction: rtl; }
+        .project-layout.reverse > * { direction: ltr; }
+
+        .project-info h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-info p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-info .detail-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .project-info .detail-list li {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .project-info .detail-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.55em;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        .award-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(74, 222, 128, 0.1);
+            color: var(--success);
+            padding: 0.3rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            border: 1px solid rgba(74, 222, 128, 0.2);
+            margin-bottom: 1rem;
+        }
+
+        /* Video section */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .video-card {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            transition: border-color 0.3s;
+        }
+
+        .video-card:hover {
+            border-color: var(--accent);
+        }
+
+        .video-card video {
+            width: 100%;
+            display: block;
+            background: #000;
+        }
+
+        .video-card .video-info {
+            padding: 0.75rem 1rem;
+        }
+
+        .video-card .video-info h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .video-card .video-info p {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* Text-only project cards */
+        .text-projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
+        .text-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .text-card:hover {
+            border-color: var(--accent);
+            background: var(--bg-card-hover);
+        }
+
+        .text-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .text-card .card-role {
+            font-size: 0.78rem;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+        }
+
+        .text-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .text-card .detail-list {
+            list-style: none;
+            margin-top: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .text-card .detail-list li {
+            font-size: 0.83rem;
+            color: var(--text-secondary);
+            padding-left: 1.1rem;
+            position: relative;
+        }
+
+        .text-card .detail-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.55em;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        .text-card .tag-row { justify-content: flex-start; margin-top: 1rem; }
+
+        /* Contact section */
+        #contact {
+            text-align: center;
+            background: radial-gradient(ellipse at 50% 70%, rgba(108, 99, 255, 0.06) 0%, transparent 70%);
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem 2rem;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            border-color: var(--accent);
+        }
+
+        .contact-item strong {
+            display: block;
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Fullscreen video overlay */
+        .video-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(10px);
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .video-overlay.active { display: flex; }
+
+        .video-overlay video {
+            max-width: 90vw;
+            max-height: 85vh;
+            border-radius: 12px;
+            box-shadow: 0 0 60px rgba(108, 99, 255, 0.2);
+        }
+
+        .video-overlay .close-btn {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Play button overlay on video cards */
+        .video-card { cursor: pointer; position: relative; }
+        .video-card .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .video-card:hover .play-overlay { opacity: 1; }
+        .play-overlay .play-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(108, 99, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .play-icon::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 0 10px 18px;
+            border-color: transparent transparent transparent white;
+            margin-left: 3px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .project-layout { grid-template-columns: 1fr; }
+            .project-layout.reverse { direction: ltr; }
+            .media-grid.cols-3 { grid-template-columns: repeat(2, 1fr); }
+            .video-grid { grid-template-columns: 1fr; }
+            nav ul { display: none; }
+        }
+
+        @media (max-width: 600px) {
+            .media-grid.cols-2, .media-grid.cols-2-1, .media-grid.cols-1-2 {
+                grid-template-columns: 1fr;
+            }
+            section { padding: 80px 1rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="logo">M<span>.</span>Krykun</div>
+    <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#hexapod">Hexapod</a></li>
+        <li><a href="#drone">Thesis</a></li>
+        <li><a href="#eudis">EUDIS</a></li>
+        <li><a href="#robotic-arm">NOGA</a></li>
+        <li><a href="#windos">WindOS</a></li>
+        <li><a href="#kineglove">KineGlove</a></li>
+        <li><a href="#musicjam">MusicJam</a></li>
+        <li><a href="#train-detection">Train</a></li>
+        <li><a href="#other-projects">More</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- Fullscreen video overlay -->
+<div class="video-overlay" id="videoOverlay" onclick="closeVideo()">
+    <button class="close-btn" onclick="closeVideo()">&times;</button>
+    <video id="overlayVideo" controls onclick="event.stopPropagation()"></video>
+</div>
+
+<!-- ==================== TITLE SLIDE ==================== -->
+<section id="hero">
+    <div class="section-inner">
+        <h1>Mariia <span>Krykun</span></h1>
+        <p class="subtitle">Robotics & Embedded Systems Engineer — building autonomous systems from concept to hardware</p>
+        <div class="tag-row">
+            <span class="tag">Robotics</span>
+            <span class="tag">Embedded Systems</span>
+            <span class="tag">Computer Vision</span>
+            <span class="tag">ROS2</span>
+            <span class="tag">PCB Design</span>
+            <span class="tag">3D Modeling</span>
+            <span class="tag">Python</span>
+            <span class="tag">C/C++</span>
+        </div>
+    </div>
+    <div class="scroll-hint">Scroll to explore</div>
+</section>
+
+<!-- ==================== HEXAPOD ROBOT ==================== -->
+<section id="hexapod">
+    <div class="section-inner">
+        <div class="project-layout">
+            <div class="project-info">
+                <div class="section-label">Featured Project &middot; Feb 2025 — Jun 2025</div>
+                <h3>Hexapod Robot</h3>
+                <p>A six-legged walking robot capable of navigating uneven terrain and operating under remote control, developed as part of a student team at Gdansk University of Technology. The robot's structure is fully 3D-printed and optimized for modular construction.</p>
+                <ul class="detail-list">
+                    <li>Developed and tested walking algorithms using Python and ROS 2</li>
+                    <li>Integrated systems in Gazebo simulation and ESP32 for real-world control</li>
+                    <li>Implemented multiple walking gaits: bi-gate, tri-gate, ripple, and wave</li>
+                    <li>IMU-based self-stabilization on uneven terrain</li>
+                    <li>Custom 3D-printed body with "HEX" branding</li>
+                </ul>
+                <div class="tag-row" style="justify-content: flex-start; margin-top: 1rem;">
+                    <span class="tag">ROS2</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">Gazebo</span>
+                    <span class="tag">ESP32</span>
+                    <span class="tag">3D Printing</span>
+                    <span class="tag">IMU</span>
+                </div>
+            </div>
+            <div class="media-grid cols-2" style="height: fit-content;">
+                <div class="media-item">
+                    <img src="projects_portfolio/projects portfolio/hexapod-render.jpeg" alt="Hexapod 3D Render">
+                    <div class="media-label">3D Render — Fusion 360</div>
+                </div>
+                <div class="media-item">
+                    <img src="projects_portfolio/projects portfolio/hex.jpg" alt="Hexapod built">
+                    <div class="media-label">Final Build</div>
+                </div>
+                <div class="media-item">
+                    <img src="projects_portfolio/projects portfolio/hexapody.jpg" alt="Hexapod body parts">
+                    <div class="media-label">Custom Body Assembly</div>
+                </div>
+                <div class="media-item">
+                    <img src="projects_portfolio/projects portfolio/hex-stary.jpg" alt="First prototype">
+                    <div class="media-label">First Prototype</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== HEXAPOD BUILD GALLERY ==================== -->
+<section id="hexapod-build">
+    <div class="section-inner">
+        <div class="section-header">
+            <div class="section-label">Hexapod Robot</div>
+            <div class="section-title">Build Process</div>
+            <p class="section-desc">From early prototyping to final assembly — evolving the design through multiple iterations.</p>
+        </div>
+        <div class="media-grid cols-3" style="max-height: 65vh;">
+            <div class="media-item">
+                <img src="projects_portfolio/projects portfolio/hex-stary.jpg" alt="Early prototype" style="height: 300px;">
+                <div class="media-label">Early prototype with breadboard</div>
+            </div>
+            <div class="media-item">
+                <img src="projects_portfolio/projects portfolio/hex-1.jpg" alt="Assembly in progress" style="height: 300px;">
+                <div class="media-label">Assembly on workbench</div>
+            </div>
+            <div class="media-item">
+                <img src="projects_portfolio/projects portfolio/hex-2.jpg" alt="Testing on tilted surface" style="height: 300px;">
+                <div class="media-label">Terrain testing with the team</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== HEXAPOD VIDEOS — SIMULATION ==================== -->
+<section id="hexapod-videos">
+    <div class="section-inner">
+        <div class="section-header">
+            <div class="section-label">Hexapod Robot</div>
+            <div class="section-title">Simulation — Walking Gaits</div>
+            <p class="section-desc">Gazebo simulation of different locomotion patterns. Click any video to play fullscreen.</p>
+        </div>
+        <div class="video-grid">
+            <div class="video-card" onclick="openVideo(this)">
+                <video src="projects_portfolio/projects portfolio/simulation_bi_gate.mp4" muted preload="metadata"></video>
+                <div class="play-overlay"><div class="play-icon"></div></div>
+                <div class="video-info">
+                    <h4>Bi-Gate</h4>
+                    <p>Two-leg alternating gait pattern</p>
+                </div>
+            </div>
+            <div class="video-card" onclick="openVideo(this)">
+                <video src="projects_portfolio/projects portfolio/simulation_tri_gate.mp4" muted preload="metadata"></video>
+                <div class="play-overlay"><div class="play-icon"></div></div>
+                <div class="video-info">
+                    <h4>Tri-Gate</h4>
+                    <p>Three-leg tripod gait pattern</p>
+                </div>
+            </div>
+            <div class="video-card" onclick="openVideo(this)">
+                <video src="projects_portfolio/projects portfolio/simulation_ripple_gate.mp4" muted preload="metadata"></video>
+                <div class="play-overlay"><div class="play-icon"></div></div>
+                <div class="video-info">
+                    <h4>Ripple Gate</h4>
+                    <p>Ripple wave locomotion pattern</p>
+                </div>
+            </div>
+            <div class="video-card" onclick="openVideo(this)">
+                <video src="projects_portfolio/projects portfolio/simulation_wave_gate.mp4" muted preload="metadata"></video>
+                <div class="play-overlay"><div class="play-icon"></div></div>
+                <div class="video-info">
+                    <h4>Wave Gate</h4>
+                    <p>Sequential wave gait pattern</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== HEXAPOD VIDEOS — REAL ROBOT ==================== -->
+<section id="hexapod-real">
+    <div class="section-inner">
+        <div class="section-header">
+            <div class="section-label">Hexapod Robot</div>
+            <div class="section-title">Real Robot Demos</div>
+            <p class="section-desc">Physical hexapod in action — dancing, waving, and self-stabilizing with IMU feedback.</p>
+        </div>
+        <div class="video-grid">
+            <div class="video-card" onclick="openVideo(this)">
+                <video src="projects_portfolio/projects portfolio/dancing.mp4" muted preload="metadata"></video>
+                <div class="play-overlay"><div class="play-icon"></div></div>
+                <div class="video-info">
+                    <h4>Dancing</h4>
+                    <p>Choreographed movement demo</p>
+                </div>
+            </div>
+            <div class="video-card" onclick="openVideo(this)">
+                <video src="projects_portfolio/projects portfolio/say hi.mp4" muted preload="metadata"></video>
+                <div class="play-overlay"><div class="play-icon"></div></div>
+                <div class="video-info">
+                    <h4>Say Hi</h4>
+                    <p>Wave gesture demo</p>
+                </div>
+            </div>
+            <div class="video-card" onclick="openVideo(this)">
+                <video src="projects_portfolio/projects portfolio/imu_self_stabilization.mp4" muted preload="metadata"></video>
+                <div class="play-overlay"><div class="play-icon"></div></div>
+                <div class="video-info">
+                    <h4>IMU Self-Stabilization</h4>
+                    <p>Real-time balance on uneven surface</p>
+                </div>
+            </div>
+            <div class="video-card" onclick="openVideo(this)">
+                <video src="projects_portfolio/projects portfolio/imu_self_stabilization_w_plot.mp4" muted preload="metadata"></video>
+                <div class="play-overlay"><div class="play-icon"></div></div>
+                <div class="video-info">
+                    <h4>Stabilization with Plot</h4>
+                    <p>IMU data visualization during balance</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== DRONE LOCALIZATION — OVERVIEW ==================== -->
+<section id="drone">
+    <div class="section-inner">
+        <div class="project-layout">
+            <div class="project-info">
+                <div class="section-label">BEng Thesis &middot; Dec 2024 — Dec 2025</div>
+                <h3>Autonomous Drone Navigation in GPS-Denied Environments</h3>
+                <p>An autonomous drone navigation system for GPS-denied environments, developed as part of my engineering thesis at Gdansk University of Technology. The system relies on vision-based localization using semantic segmentation and spatial pattern matching, allowing a drone to estimate its position relative to satellite imagery without GPS.</p>
+                <ul class="detail-list">
+                    <li>Hybrid architecture: ORB-VO relative localization + semantic segmentation absolute correction</li>
+                    <li>Trained U-Net (EfficientNet-B3) for semantic segmentation — mean IoU 0.734, 94.5% pixel accuracy on Landcover.ai</li>
+                    <li>Reference map generation via fusion of Geoportal orthophotos with OpenStreetMap topographic data</li>
+                    <li>Three matching methods implemented: voting accumulator (4.82px error), RANSAC, and combined approach (58% faster)</li>
+                    <li>ORB-VO achieved 0.22% relative drift over 73 km; periodic correction reduced mean error by 78.4%</li>
+                    <li>Custom PyQt5 GUI for reference map creation with interactive map viewer</li>
+                </ul>
+                <div class="tag-row" style="justify-content: flex-start; margin-top: 1rem;">
+                    <span class="tag">Python</span>
+                    <span class="tag">TensorFlow</span>
+                    <span class="tag">OpenCV</span>
+                    <span class="tag">U-Net</span>
+                    <span class="tag">PyQt5</span>
+                    <span class="tag">OSMnx</span>
+                </div>
+            </div>
+            <div class="media-grid cols-1" style="height: fit-content;">
+                <div class="media-item">
+                    <img src="img/schemat_koncowy.png" alt="System architecture diagram">
+                    <div class="media-label">System pipeline: reference map creation, ORB-VO, semantic matching, position correction</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== DRONE LOCALIZATION — VISUALS ==================== -->
+<section id="drone-visuals">
+    <div class="section-inner">
+        <div class="section-header">
+            <div class="section-label">BEng Thesis</div>
+            <div class="section-title">Visual Results</div>
+            <p class="section-desc">Semantic segmentation of drone and satellite imagery, reference map generation, ORB feature matching, and trajectory estimation.</p>
+        </div>
+        <div class="media-grid cols-2">
+            <div class="media-item">
+                <img src="img/000600_overlay.png" alt="Semantic segmentation of oblique drone view">
+                <div class="media-label">Semantic segmentation — oblique drone view (U-Net + EfficientNet-B3)</div>
+            </div>
+            <div class="media-item">
+                <img src="img/reference_map_comparison.png" alt="Reference map creation process">
+                <div class="media-label">Reference map creation — OSM topographic + neural network segmentation fusion</div>
+            </div>
+            <div class="media-item">
+                <img src="img/0001_stage4_matches_final.png" alt="ORB feature matching after filtering">
+                <div class="media-label">ORB visual odometry — feature matches after RANSAC + flow filtering</div>
+            </div>
+            <div class="media-item">
+                <img src="img/final_trajectory.png" alt="Estimated trajectory vs ground truth">
+                <div class="media-label">ORB trajectory (blue) vs ground truth (orange) — 73 km flight, 0.22% drift</div>
+            </div>
+        </div>
+        <div class="media-grid cols-2" style="margin-top: 1rem;">
+            <div class="media-item">
+                <img src="img/traj_with_gt_combined_voting_ransac.png" alt="Semantic matching trajectory">
+                <div class="media-label">Absolute localization — semantic mask matching to reference map</div>
+            </div>
+            <div class="media-item">
+                <img src="img/gui_poland.png" alt="PyQt5 reference map GUI">
+                <div class="media-label">PyQt5 GUI — interactive reference map creation tool</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== EUDIS DEFENCE ==================== -->
+<section id="eudis">
+    <div class="section-inner">
+        <div class="project-layout reverse">
+            <div class="project-info">
+                <div class="award-badge">&#9733; EUDIS Defence Hackathon — 1st Place</div>
+                <div class="section-label">Hackathon Project</div>
+                <h3>EUDIS Defence</h3>
+                <p>Distributed drone detection system — a network of sensor stations designed to detect and track unauthorized drones across a wide area using neural networks and signal analysis.</p>
+                <ul class="detail-list">
+                    <li>Distributed multi-station detection architecture</li>
+                    <li>Trained a neural network for drone detection</li>
+                    <li>Heuristic detection algorithms based on signal FFT analysis</li>
+                    <li>Custom 3D-printed enclosures for stationary and deployable units</li>
+                </ul>
+                <div class="tag-row" style="justify-content: flex-start; margin-top: 1rem;">
+                    <span class="tag">Neural Networks</span>
+                    <span class="tag">FFT</span>
+                    <span class="tag">Embedded</span>
+                    <span class="tag">3D Printing</span>
+                    <span class="tag">Defence</span>
+                </div>
+            </div>
+            <div class="media-grid cols-2" style="height: fit-content;">
+                <div class="media-item">
+                    <img src="projects_portfolio/projects portfolio/eudis_deploy_render.jpg" alt="EUDIS team">
+                    <div class="media-label">Team at the event</div>
+                </div>
+                <div class="media-item">
+                    <img src="projects_portfolio/projects portfolio/eudis_deploy1.jpg" alt="EUDIS deployable unit">
+                    <div class="media-label">Deployable unit</div>
+                </div>
+                <div class="media-item">
+                    <img src="projects_portfolio/projects portfolio/eudis_stationary.jpg" alt="EUDIS stationary unit">
+                    <div class="media-label">Stationary station</div>
+                </div>
+                <div class="media-item">
+                    <img src="projects_portfolio/projects portfolio/eudis_stationary_render.jpg" alt="EUDIS stationary render">
+                    <div class="media-label">Stationary unit — 3D render</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== ROBOTIC ARM ==================== -->
+<section id="robotic-arm">
+    <div class="section-inner">
+        <div class="project-layout">
+            <div class="project-info">
+                <div class="award-badge">&#9733; Re:renesans Hackathon — 3rd Place Jury &middot; 2nd Place Public Vote</div>
+                <div class="section-label">Hackathon Project</div>
+                <h3>NOGA — Light Drawing 5DoF Robotic Arm</h3>
+                <p>Neon Optical Graphical Arm (NOGA) is a 5DoF robotic arm designed to draw with light on photos. Built from scratch during the Re:renesans hackathon — responsible for 3D modeling, electronics, and assembly, with support on GUI programming and simulation.</p>
+                <ul class="detail-list">
+                    <li>Designed complete 3D model and mechanical assembly</li>
+                    <li>Built electronics and assembled the arm</li>
+                    <li>Custom GUI with real-time trajectory plotting</li>
+                    <li>Light drawing capability for long-exposure photography</li>
+                </ul>
+                <div class="tag-row" style="justify-content: flex-start; margin-top: 1rem;">
+                    <span class="tag">Fusion 360</span>
+                    <span class="tag">3D Printing</span>
+                    <span class="tag">Electronics</span>
+                    <span class="tag">ESP32</span>
+                </div>
+            </div>
+            <div class="media-grid cols-2" style="height: fit-content;">
+                <div class="media-item">
+                    <img src="projects_portfolio/projects portfolio/rerenesans1.jpg" alt="Robotic arm standing">
+                    <div class="media-label">At the Re:renesans event</div>
+                </div>
+                <div class="media-item">
+                    <img src="projects_portfolio/projects portfolio/rerenesans2.jpg" alt="Robotic arm at event">
+                    <div class="media-label">Demo at hackathon stage</div>
+                </div>
+                <div class="media-item">
+                    <img src="projects_portfolio/projects portfolio/rerenesans3.jpg" alt="Full workspace">
+                    <div class="media-label">Hackathon workspace</div>
+                </div>
+                <div class="media-item">
+                    <img src="projects_portfolio/projects portfolio/rerenesans-gui.jpg" alt="GUI and simulation">
+                    <div class="media-label">Trajectory planning GUI</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== WINDOS 98 ==================== -->
+<section id="windos">
+    <div class="section-inner">
+        <div class="project-layout reverse">
+            <div class="project-info">
+                <div class="section-label">Personal Project</div>
+                <h3>WindOS 98</h3>
+
+                <p>A compact bus and weather tracking system in a custom 3D-printed enclosure — connects to home WiFi, fetches real-time bus arrivals via Google Cloud API and weather forecasts from OpenWeather API. Features energy-saving modes and a built-in dino game.</p>
+                <ul class="detail-list">
+                    <li>Connects to WiFi and fetches data from Google Cloud and OpenWeather APIs</li>
+                    <li>Real-time bus arrival tracking for nearby stations</li>
+                    <li>Weekly weather forecast display</li>
+                    <li>Energy-saving modes for extended battery life</li>
+                    <li>Built-in dino game as a bonus feature</li>
+                    <li>Custom 3D-printed case with "WindOS 98" retro branding</li>
+                    <li>LCD display with joystick-based navigation</li>
+                </ul>
+                <div class="tag-row" style="justify-content: flex-start; margin-top: 1rem;">
+                    <span class="tag">ESP32</span>
+                    <span class="tag">REST API</span>
+                    <span class="tag">Google Cloud</span>
+                    <span class="tag">3D Printing</span>
+                    <span class="tag">IoT</span>
+                </div>
+            </div>
+            <div class="media-grid cols-2" style="height: fit-content;">
+                <div class="media-item">
+                    <img src="projects_portfolio/projects portfolio/wind_os_1.jpg" alt="WindOS 98 assembled">
+                    <div class="media-label">Assembled device</div>
+                </div>
+                <div class="media-item">
+                    <img src="projects_portfolio/projects portfolio/w_bus_weather_device.jpg" alt="Bus and weather display">
+                    <div class="media-label">Bus & weather display</div>
+                </div>
+                <div class="media-item">
+                    <img src="projects_portfolio/projects portfolio/wind_os_dino_game.jpg" alt="Dino game on WindOS">
+                    <div class="media-label">Dino game</div>
+                </div>
+                <div class="media-item">
+                    <img src="projects_portfolio/projects portfolio/wind_os_2.jpg" alt="WindOS 98 internals">
+                    <div class="media-label">Internal components</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== KINEGLOVE ==================== -->
+<section id="kineglove">
+    <div class="section-inner">
+        <div class="project-layout">
+            <div class="project-info">
+                <div class="award-badge">&#9733; HackYeah — Project</div>
+                <div class="section-label">Hackathon Project</div>
+                <h3>KineGlove</h3>
+                <p>Motion-sensing gloves that translate hand gestures into game controls — demonstrated by playing Minecraft hands-free using custom sensor-equipped gloves.</p>
+                <ul class="detail-list">
+                    <li>Built sensor-equipped gloves with IMU and flex sensors</li>
+                    <li>Collected custom IMU dataset and trained a model for gesture detection</li>
+                    <li>Real-time gesture recognition and mapping to game controls</li>
+                    <li>Demonstrated playing Minecraft with full hand control</li>
+                </ul>
+                <div class="tag-row" style="justify-content: flex-start; margin-top: 1rem;">
+                    <span class="tag">IMU Sensors</span>
+                    <span class="tag">Machine Learning</span>
+                    <span class="tag">Embedded</span>
+                    <span class="tag">Gesture Recognition</span>
+                </div>
+            </div>
+            <div class="media-grid cols-1" style="height: fit-content;">
+                <div class="media-item">
+                    <img src="projects_portfolio/projects portfolio/hackyeah-kineglove-minecraft.png" alt="Playing Minecraft with KineGlove">
+                    <div class="media-label">Playing Minecraft with KineGlove</div>
+                </div>
+                <div class="media-item">
+                    <img src="projects_portfolio/projects portfolio/hackyeah-kineglove.png" alt="KineGlove sensors">
+                    <div class="media-label">Sensor-equipped gloves</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== MUSICJAM ==================== -->
+<section id="musicjam">
+    <div class="section-inner">
+        <div class="project-layout reverse">
+            <div class="project-info">
+                <div class="award-badge">&#9733; MusicJam Hackathon — 1st Place</div>
+                <div class="section-label">Hackathon Project</div>
+                <h3>MusicJam — Du hast den guten Wein bisher behalten</h3>
+                <p>An interactive sound installation that reimagines a fragment of the baroque composition "Du hast den guten Wein bisher behalten" by Johann Daniel Pucklitz through the live-coding ecosystem Strudel.</p>
+                <ul class="detail-list">
+                    <li>Baroque notesheets transcribed by hand and rewritten in code</li>
+                    <li>Real-time shaping via tactile, mushroom-shaped controllers</li>
+                    <li>Each mushroom hides a different sensor to alter parameters and apply effects</li>
+                    <li>A meeting point between baroque music and interactive digital art</li>
+                </ul>
+                <div class="tag-row" style="justify-content: flex-start; margin-top: 1rem;">
+                    <span class="tag">Strudel</span>
+                    <span class="tag">Live Coding</span>
+                    <span class="tag">Sensors</span>
+                    <span class="tag">Interactive Art</span>
+                </div>
+            </div>
+            <div class="media-grid cols-2" style="height: fit-content;">
+                <div class="media-item">
+                    <img src="projects_portfolio/projects portfolio/musicjam.jpg" alt="MusicJam installation">
+                    <div class="media-label">Installation setup</div>
+                </div>
+                <div class="media-item">
+                    <img src="projects_portfolio/projects portfolio/musicjam1.jpg" alt="MusicJam controllers">
+                    <div class="media-label">Mushroom controllers</div>
+                </div>
+                <div class="media-item">
+                    <img src="projects_portfolio/projects portfolio/musicjam2.jpg" alt="MusicJam performance">
+                    <div class="media-label">Live performance</div>
+                </div>
+                <div class="media-item video-card" onclick="openVideo(this)" style="cursor: pointer;">
+                    <video src="projects_portfolio/projects portfolio/musicjam_video.mp4" muted preload="metadata"></video>
+                    <div class="play-overlay"><div class="play-icon"></div></div>
+                    <div class="media-label">Demo video</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== TRAIN DETECTION SYSTEM ==================== -->
+<section id="train-detection">
+    <div class="section-inner">
+        <div class="project-layout">
+            <div class="project-info">
+                <div class="section-label">Team Lead &middot; October 2024 — July 2025</div>
+                <h3>Train Detection System</h3>
+                <p>Radar and LiDAR-based train arrival and departure detection system achieving 99% accuracy, deployed in production.</p>
+                <ul class="detail-list">
+                    <li>Led cross-functional team using Scrum methodology</li>
+                    <li>Designed custom PCB and mounting system</li>
+                    <li>Combined radar and LiDAR for 99% detection accuracy</li>
+                    <li>Production deployment with industrial-grade reliability</li>
+                </ul>
+                <div class="tag-row" style="justify-content: flex-start; margin-top: 1rem;">
+                    <span class="tag">LiDAR</span>
+                    <span class="tag">Radar</span>
+                    <span class="tag">KiCad</span>
+                    <span class="tag">Scrum</span>
+                    <span class="tag">Fusion 360</span>
+                </div>
+            </div>
+            <div class="media-grid cols-1" style="height: fit-content;">
+                <div class="media-item">
+                    <img src="projects_portfolio/projects portfolio/train_detection_system.jpg" alt="Train Detection System">
+                    <div class="media-label">Deployed detection system</div>
+                </div>
+                <div class="media-item">
+                    <img src="projects_portfolio/projects portfolio/train_detection_system_2.jpg" alt="Train Detection System setup">
+                    <div class="media-label">System installation</div>
+                </div>
+                <div class="media-item">
+                    <img src="projects_portfolio/projects portfolio/test_radar.jpg" alt="Radar testing">
+                    <div class="media-label">Radar testing</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== OTHER PROJECTS ==================== -->
+<section id="other-projects">
+    <div class="section-inner">
+        <div class="section-header">
+            <div class="section-label">More Work</div>
+            <div class="section-title">Other Projects</div>
+        </div>
+        <div class="text-projects">
+
+            <div class="text-card">
+                <h3>Time & Task Manager</h3>
+                <div class="card-role">Personal Project</div>
+                <p>A productivity tool integrating Google Sheets and Google Calendar for seamless task tracking and time management.</p>
+                <ul class="detail-list">
+                    <li>Google Sheets & Calendar API integration</li>
+                    <li>Automated scheduling and reminders</li>
+                    <li>Custom analytics dashboard</li>
+                </ul>
+                <div class="tag-row">
+                    <span class="tag">Google APIs</span>
+                    <span class="tag">Python</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ==================== CONTACT ==================== -->
+<section id="contact">
+    <div class="section-inner">
+        <div class="section-label" style="text-align: center;">Get in Touch</div>
+        <div class="section-title" style="text-align: center; margin-bottom: 0.5rem;">Let's Build Something</div>
+        <p class="section-desc" style="text-align: center; margin: 0 auto;">Robotics engineer based in Gdansk, Poland — open to opportunities in robotics, embedded systems, and autonomous systems.</p>
+        <div class="contact-info">
+            <div class="contact-item">
+                <strong>Location</strong>
+                Gdansk, Poland
+            </div>
+            <div class="contact-item">
+                <strong>Education</strong>
+                BEng — Automatic Control, Cybernetics & Robotics<br>Gdansk University of Technology
+            </div>
+            <div class="contact-item">
+                <strong>Languages</strong>
+                English (C1) &middot; Polish (C1) &middot; Ukrainian (Native)
+            </div>
+        </div>
+        <div class="tag-row" style="margin-top: 2.5rem;">
+            <span class="tag">Python</span>
+            <span class="tag">C/C++</span>
+            <span class="tag">C#</span>
+            <span class="tag">CUDA</span>
+            <span class="tag">Arduino</span>
+            <span class="tag">ESP32</span>
+            <span class="tag">STM32</span>
+            <span class="tag">KiCad</span>
+            <span class="tag">Fusion 360</span>
+            <span class="tag">Gazebo</span>
+            <span class="tag">ROS2</span>
+            <span class="tag">MATLAB</span>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Fullscreen video playback
+    function openVideo(card) {
+        const src = card.querySelector('video').src;
+        const overlay = document.getElementById('videoOverlay');
+        const video = document.getElementById('overlayVideo');
+        video.src = src;
+        overlay.classList.add('active');
+        video.play();
+    }
+
+    function closeVideo() {
+        const overlay = document.getElementById('videoOverlay');
+        const video = document.getElementById('overlayVideo');
+        video.pause();
+        video.src = '';
+        overlay.classList.remove('active');
+    }
+
+    // Escape key closes video
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeVideo();
+    });
+
+    // Active nav link tracking
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav ul a');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navLinks.forEach(link => link.classList.remove('active'));
+                const activeLink = document.querySelector(`nav ul a[href="#${entry.target.id}"]`);
+                if (activeLink) activeLink.classList.add('active');
+            }
+        });
+    }, { threshold: 0.3 });
+
+    sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
