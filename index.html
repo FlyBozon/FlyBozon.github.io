@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mariia Krykun — Project Portfolio</title>
+    <title>Mariia Krykun - Project Portfolio</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
@@ -569,6 +569,7 @@
         <li><a href="#kineglove">KineGlove</a></li>
         <li><a href="#musicjam">MusicJam</a></li>
         <li><a href="#train-detection">Train</a></li>
+        <li><a href="#smartpath">SmartPath</a></li>
         <li><a href="#other-projects">More</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
@@ -584,7 +585,7 @@
 <section id="hero">
     <div class="section-inner">
         <h1>Mariia <span>Krykun</span></h1>
-        <p class="subtitle">Robotics & Embedded Systems Engineer — building autonomous systems from concept to hardware</p>
+        <p class="subtitle">Robotics & Embedded Systems Engineer - building autonomous systems from concept to hardware</p>
         <div class="tag-row">
             <span class="tag">Robotics</span>
             <span class="tag">Embedded Systems</span>
@@ -604,9 +605,9 @@
     <div class="section-inner">
         <div class="project-layout">
             <div class="project-info">
-                <div class="section-label">Featured Project &middot; Feb 2025 — Jun 2025</div>
+                <div class="section-label">Featured Project &middot; Co-Lead &middot; 10 People &middot; Feb 2025 - Jun 2025</div>
                 <h3>Hexapod Robot</h3>
-                <p>A six-legged walking robot capable of navigating uneven terrain and operating under remote control, developed as part of a student team at Gdansk University of Technology. The robot's structure is fully 3D-printed and optimized for modular construction.</p>
+                <p>A six-legged walking robot capable of navigating uneven terrain and operating under remote control, developed as part of a 10-person student team at Gdansk University of Technology. Served as co-lead — supporting project coordination alongside the team lead. The robot's structure is fully 3D-printed and optimized for modular construction.</p>
                 <ul class="detail-list">
                     <li>Developed and tested walking algorithms using Python and ROS 2</li>
                     <li>Integrated systems in Gazebo simulation and ESP32 for real-world control</li>
@@ -626,7 +627,7 @@
             <div class="media-grid cols-2" style="height: fit-content;">
                 <div class="media-item">
                     <img src="projects_portfolio/projects portfolio/hexapod-render.jpeg" alt="Hexapod 3D Render">
-                    <div class="media-label">3D Render — Fusion 360</div>
+                    <div class="media-label">3D Render - Fusion 360</div>
                 </div>
                 <div class="media-item">
                     <img src="projects_portfolio/projects portfolio/hex.jpg" alt="Hexapod built">
@@ -651,7 +652,7 @@
         <div class="section-header">
             <div class="section-label">Hexapod Robot</div>
             <div class="section-title">Build Process</div>
-            <p class="section-desc">From early prototyping to final assembly — evolving the design through multiple iterations.</p>
+            <p class="section-desc">From early prototyping to final assembly - evolving the design through multiple iterations.</p>
         </div>
         <div class="media-grid cols-3" style="max-height: 65vh;">
             <div class="media-item">
@@ -670,12 +671,12 @@
     </div>
 </section>
 
-<!-- ==================== HEXAPOD VIDEOS — SIMULATION ==================== -->
+<!-- ==================== HEXAPOD VIDEOS - SIMULATION ==================== -->
 <section id="hexapod-videos">
     <div class="section-inner">
         <div class="section-header">
             <div class="section-label">Hexapod Robot</div>
-            <div class="section-title">Simulation — Walking Gaits</div>
+            <div class="section-title">Simulation - Walking Gaits</div>
             <p class="section-desc">Gazebo simulation of different locomotion patterns. Click any video to play fullscreen.</p>
         </div>
         <div class="video-grid">
@@ -715,13 +716,13 @@
     </div>
 </section>
 
-<!-- ==================== HEXAPOD VIDEOS — REAL ROBOT ==================== -->
+<!-- ==================== HEXAPOD VIDEOS - REAL ROBOT ==================== -->
 <section id="hexapod-real">
     <div class="section-inner">
         <div class="section-header">
             <div class="section-label">Hexapod Robot</div>
             <div class="section-title">Real Robot Demos</div>
-            <p class="section-desc">Physical hexapod in action — dancing, waving, and self-stabilizing with IMU feedback.</p>
+            <p class="section-desc">Physical hexapod in action - dancing, waving, and self-stabilizing with IMU feedback.</p>
         </div>
         <div class="video-grid">
             <div class="video-card" onclick="openVideo(this)">
@@ -741,7 +742,9 @@
                 </div>
             </div>
             <div class="video-card" onclick="openVideo(this)">
-                <video src="projects_portfolio/projects portfolio/imu_self_stabilization.mp4" muted preload="metadata"></video>
+                <div style="aspect-ratio: 16/9; overflow: hidden;">
+                    <video src="projects_portfolio/projects portfolio/imu_self_stabilization.mp4" muted preload="metadata" style="width: 100%; height: 100%; object-fit: cover;"></video>
+                </div>
                 <div class="play-overlay"><div class="play-icon"></div></div>
                 <div class="video-info">
                     <h4>IMU Self-Stabilization</h4>
@@ -760,17 +763,17 @@
     </div>
 </section>
 
-<!-- ==================== DRONE LOCALIZATION — OVERVIEW ==================== -->
+<!-- ==================== DRONE LOCALIZATION - OVERVIEW ==================== -->
 <section id="drone">
     <div class="section-inner">
         <div class="project-layout">
             <div class="project-info">
-                <div class="section-label">BEng Thesis &middot; Dec 2024 — Dec 2025</div>
+                <div class="section-label">BEng Thesis &middot; Dec 2024 - Dec 2025</div>
                 <h3>Autonomous Drone Navigation in GPS-Denied Environments</h3>
                 <p>An autonomous drone navigation system for GPS-denied environments, developed as part of my engineering thesis at Gdansk University of Technology. The system relies on vision-based localization using semantic segmentation and spatial pattern matching, allowing a drone to estimate its position relative to satellite imagery without GPS.</p>
                 <ul class="detail-list">
                     <li>Hybrid architecture: ORB-VO relative localization + semantic segmentation absolute correction</li>
-                    <li>Trained U-Net (EfficientNet-B3) for semantic segmentation — mean IoU 0.734, 94.5% pixel accuracy on Landcover.ai</li>
+                    <li>Trained U-Net (EfficientNet-B3) for semantic segmentation - mean IoU 0.734, 94.5% pixel accuracy on Landcover.ai</li>
                     <li>Reference map generation via fusion of Geoportal orthophotos with OpenStreetMap topographic data</li>
                     <li>Three matching methods implemented: voting accumulator (4.82px error), RANSAC, and combined approach (58% faster)</li>
                     <li>ORB-VO achieved 0.22% relative drift over 73 km; periodic correction reduced mean error by 78.4%</li>
@@ -795,7 +798,7 @@
     </div>
 </section>
 
-<!-- ==================== DRONE LOCALIZATION — VISUALS ==================== -->
+<!-- ==================== DRONE LOCALIZATION - VISUALS ==================== -->
 <section id="drone-visuals">
     <div class="section-inner">
         <div class="section-header">
@@ -806,29 +809,29 @@
         <div class="media-grid cols-2">
             <div class="media-item">
                 <img src="img/000600_overlay.png" alt="Semantic segmentation of oblique drone view">
-                <div class="media-label">Semantic segmentation — oblique drone view (U-Net + EfficientNet-B3)</div>
+                <div class="media-label">Semantic segmentation - oblique drone view (U-Net + EfficientNet-B3)</div>
             </div>
             <div class="media-item">
                 <img src="img/reference_map_comparison.png" alt="Reference map creation process">
-                <div class="media-label">Reference map creation — OSM topographic + neural network segmentation fusion</div>
+                <div class="media-label">Reference map creation - OSM topographic + neural network segmentation fusion</div>
             </div>
             <div class="media-item">
                 <img src="img/0001_stage4_matches_final.png" alt="ORB feature matching after filtering">
-                <div class="media-label">ORB visual odometry — feature matches after RANSAC + flow filtering</div>
+                <div class="media-label">ORB visual odometry - feature matches after RANSAC + flow filtering</div>
             </div>
             <div class="media-item">
                 <img src="img/final_trajectory.png" alt="Estimated trajectory vs ground truth">
-                <div class="media-label">ORB trajectory (blue) vs ground truth (orange) — 73 km flight, 0.22% drift</div>
+                <div class="media-label">ORB trajectory (blue) vs ground truth (orange) - 73 km flight, 0.22% drift</div>
             </div>
         </div>
         <div class="media-grid cols-2" style="margin-top: 1rem;">
             <div class="media-item">
                 <img src="img/traj_with_gt_combined_voting_ransac.png" alt="Semantic matching trajectory">
-                <div class="media-label">Absolute localization — semantic mask matching to reference map</div>
+                <div class="media-label">Absolute localization - semantic mask matching to reference map</div>
             </div>
             <div class="media-item">
                 <img src="img/gui_poland.png" alt="PyQt5 reference map GUI">
-                <div class="media-label">PyQt5 GUI — interactive reference map creation tool</div>
+                <div class="media-label">PyQt5 GUI - interactive reference map creation tool</div>
             </div>
         </div>
     </div>
@@ -839,10 +842,10 @@
     <div class="section-inner">
         <div class="project-layout reverse">
             <div class="project-info">
-                <div class="award-badge">&#9733; EUDIS Defence Hackathon — 1st Place</div>
+                <div class="award-badge">&#9733; EUDIS Defence Hackathon - 1st Place</div>
                 <div class="section-label">Hackathon Project</div>
                 <h3>EUDIS Defence</h3>
-                <p>Distributed drone detection system — a network of sensor stations designed to detect and track unauthorized drones across a wide area using neural networks and signal analysis.</p>
+                <p>Distributed drone detection system - a network of sensor stations designed to detect and track unauthorized drones across a wide area using neural networks and signal analysis.</p>
                 <ul class="detail-list">
                     <li>Distributed multi-station detection architecture</li>
                     <li>Trained a neural network for drone detection</li>
@@ -872,7 +875,7 @@
                 </div>
                 <div class="media-item">
                     <img src="projects_portfolio/projects portfolio/eudis_stationary_render.jpg" alt="EUDIS stationary render">
-                    <div class="media-label">Stationary unit — 3D render</div>
+                    <div class="media-label">Stationary unit - 3D render</div>
                 </div>
             </div>
         </div>
@@ -884,10 +887,10 @@
     <div class="section-inner">
         <div class="project-layout">
             <div class="project-info">
-                <div class="award-badge">&#9733; Re:renesans Hackathon — 3rd Place Jury &middot; 2nd Place Public Vote</div>
+                <div class="award-badge">&#9733; Re:renesans Hackathon - 3rd Place Jury &middot; 2nd Place Public Vote</div>
                 <div class="section-label">Hackathon Project</div>
-                <h3>NOGA — Light Drawing 5DoF Robotic Arm</h3>
-                <p>Neon Optical Graphical Arm (NOGA) is a 5DoF robotic arm designed to draw with light on photos. Built from scratch during the Re:renesans hackathon — responsible for 3D modeling, electronics, and assembly, with support on GUI programming and simulation.</p>
+                <h3>NOGA - Light Drawing 5DoF Robotic Arm</h3>
+                <p>Neon Optical Graphical Arm (NOGA) is a 5DoF robotic arm designed to draw with light on photos. Built from scratch during the Re:renesans hackathon - responsible for 3D modeling, electronics, and assembly, with support on GUI programming and simulation.</p>
                 <ul class="detail-list">
                     <li>Designed complete 3D model and mechanical assembly</li>
                     <li>Built electronics and assembled the arm</li>
@@ -931,7 +934,7 @@
                 <div class="section-label">Personal Project</div>
                 <h3>WindOS 98</h3>
 
-                <p>A compact bus and weather tracking system in a custom 3D-printed enclosure — connects to home WiFi, fetches real-time bus arrivals via Google Cloud API and weather forecasts from OpenWeather API. Features energy-saving modes and a built-in dino game.</p>
+                <p>A compact bus and weather tracking system in a custom 3D-printed enclosure - connects to home WiFi, fetches real-time bus arrivals via Google Cloud API and weather forecasts from OpenWeather API. Features energy-saving modes and a built-in dino game.</p>
                 <ul class="detail-list">
                     <li>Connects to WiFi and fetches data from Google Cloud and OpenWeather APIs</li>
                     <li>Real-time bus arrival tracking for nearby stations</li>
@@ -976,10 +979,10 @@
     <div class="section-inner">
         <div class="project-layout">
             <div class="project-info">
-                <div class="award-badge">&#9733; HackYeah — Project</div>
+                <div class="award-badge">&#9733; HackYeah - Project</div>
                 <div class="section-label">Hackathon Project</div>
                 <h3>KineGlove</h3>
-                <p>Motion-sensing gloves that translate hand gestures into game controls — demonstrated by playing Minecraft hands-free using custom sensor-equipped gloves.</p>
+                <p>Motion-sensing gloves that translate hand gestures into game controls - demonstrated by playing Minecraft hands-free using custom sensor-equipped gloves.</p>
                 <ul class="detail-list">
                     <li>Built sensor-equipped gloves with IMU and flex sensors</li>
                     <li>Collected custom IMU dataset and trained a model for gesture detection</li>
@@ -1012,9 +1015,9 @@
     <div class="section-inner">
         <div class="project-layout reverse">
             <div class="project-info">
-                <div class="award-badge">&#9733; MusicJam Hackathon — 1st Place</div>
+                <div class="award-badge">&#9733; MusicJam Hackathon - 1st Place</div>
                 <div class="section-label">Hackathon Project</div>
-                <h3>MusicJam — Du hast den guten Wein bisher behalten</h3>
+                <h3>MusicJam - Du hast den guten Wein bisher behalten</h3>
                 <p>An interactive sound installation that reimagines a fragment of the baroque composition "Du hast den guten Wein bisher behalten" by Johann Daniel Pucklitz through the live-coding ecosystem Strudel.</p>
                 <ul class="detail-list">
                     <li>Baroque notesheets transcribed by hand and rewritten in code</li>
@@ -1057,7 +1060,7 @@
     <div class="section-inner">
         <div class="project-layout">
             <div class="project-info">
-                <div class="section-label">Team Lead &middot; October 2024 — July 2025</div>
+                <div class="section-label">Team Lead &middot; October 2024 - July 2025</div>
                 <h3>Train Detection System</h3>
                 <p>Radar and LiDAR-based train arrival and departure detection system achieving 99% accuracy, deployed in production.</p>
                 <ul class="detail-list">
@@ -1092,6 +1095,45 @@
     </div>
 </section>
 
+<!-- ==================== SMARTPATH ==================== -->
+<section id="smartpath">
+    <div class="section-inner">
+        <div class="project-layout">
+            <div class="project-info">
+                <div class="section-label">SignAI Hackathon &middot; 2026</div>
+                <h3>SmartPath - Intelligent Bicycle Surface Monitoring</h3>
+                <p>A bike-mounted device that continuously records vibration and accelerometer data to assess pavement quality in real time. An on-device AI model classifies surface type from the raw signal, and a web dashboard visualizes the results as an annotated route map.</p>
+                <ul class="detail-list">
+                    <li>Custom 3D-printed enclosure with handlebar mounting system - my main contribution</li>
+                    <li>IMU-based vibration signal acquisition and surface-signature extraction</li>
+                    <li>Trained AI classifier for surface-type recognition from accelerometer data</li>
+                    <li>Real-time dashboard showing acceleration profile and elevation with surface annotations</li>
+                    <li>Targets cyclists, parents with strollers, and users with mobility needs</li>
+                </ul>
+                <div class="tag-row" style="justify-content: flex-start; margin-top: 1rem;">
+                    <span class="tag">Python</span>
+                    <span class="tag">Machine Learning</span>
+                    <span class="tag">IMU / Accelerometer</span>
+                    <span class="tag">3D Printing</span>
+                    <span class="tag">Embedded</span>
+                    <span class="tag">IoT</span>
+                    <span class="tag">STM32</span>
+                </div>
+            </div>
+            <div class="media-grid cols-2" style="height: fit-content;">
+                <div class="media-item">
+                    <img src="img/mocowanie_na_rowerze.jpeg" alt="SmartPath mounted on bicycle">
+                    <div class="media-label">Device mounted on handlebar</div>
+                </div>
+                <div class="media-item">
+                    <img src="img/elektronika_w_srodku.jpg" alt="SmartPath electronics inside">
+                    <div class="media-label">Electronics inside the enclosure</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- ==================== OTHER PROJECTS ==================== -->
 <section id="other-projects">
     <div class="section-inner">
@@ -1100,6 +1142,28 @@
             <div class="section-title">Other Projects</div>
         </div>
         <div class="text-projects">
+
+            <div class="text-card">
+                <h3>Cyber-Yard - Scotland Yard AI Game</h3>
+                <div class="card-role">Group Project &middot; 11 People</div>
+                <p>A recreation of the classic Scotland Yard board game with AI agents as players. Includes a procedural city generator with transport stops and route networks, multiple AI strategies from heuristic algorithms to a trained neural network, and a full game engine rendered with OpenGL.</p>
+                <ul class="detail-list">
+                    <li>Procedural city generator with streets, transport stops, and route topology</li>
+                    <li>AI agent framework - heuristic pursuit/evasion algorithms and neural network player</li>
+                    <li>Strategy planning module for multi-step detective coordination</li>
+                    <li>Real-time 3D-style rendering using Python + OpenGL</li>
+                    <li>Coordinated 11-person team across game engine, AI, and tooling</li>
+                </ul>
+                <div class="tag-row">
+                    <span class="tag">Python</span>
+                    <span class="tag">OpenGL</span>
+                    <span class="tag">AI Agents</span>
+                    <span class="tag">Neural Networks</span>
+                    <span class="tag">Heuristics</span>
+                    <span class="tag">Procedural Generation</span>
+                </div>
+                <a href="https://github.com/Bebo457/Cyber-Yard" target="_blank" rel="noopener" style="display: inline-block; margin-top: 1rem; font-size: 0.82rem; color: var(--accent); text-decoration: none; font-weight: 500; border: 1px solid rgba(108,99,255,0.3); padding: 0.3rem 0.75rem; border-radius: 6px; transition: all 0.2s;" onmouseover="this.style.background='var(--accent-glow)'" onmouseout="this.style.background='transparent'">&#x2197; View on GitHub</a>
+            </div>
 
             <div class="text-card">
                 <h3>Time & Task Manager</h3>
@@ -1125,7 +1189,7 @@
     <div class="section-inner">
         <div class="section-label" style="text-align: center;">Get in Touch</div>
         <div class="section-title" style="text-align: center; margin-bottom: 0.5rem;">Let's Build Something</div>
-        <p class="section-desc" style="text-align: center; margin: 0 auto;">Robotics engineer based in Gdansk, Poland — open to opportunities in robotics, embedded systems, and autonomous systems.</p>
+        <p class="section-desc" style="text-align: center; margin: 0 auto;">Robotics engineer based in Gdansk, Poland - open to opportunities in robotics, embedded systems, and autonomous systems.</p>
         <div class="contact-info">
             <div class="contact-item">
                 <strong>Location</strong>
@@ -1133,7 +1197,7 @@
             </div>
             <div class="contact-item">
                 <strong>Education</strong>
-                BEng — Automatic Control, Cybernetics & Robotics<br>Gdansk University of Technology
+                BEng - Automatic Control, Cybernetics & Robotics<br>Gdansk University of Technology
             </div>
             <div class="contact-item">
                 <strong>Languages</strong>
